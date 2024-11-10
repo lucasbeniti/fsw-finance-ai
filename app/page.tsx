@@ -5,7 +5,7 @@ import { dark } from "@clerk/themes";
 import Navbar from "./_components/navbar";
 
 const Home = async () => {
-  const { userId } = await auth();
+  const { userId } = auth();
   if (!userId) {
     redirect("/login");
   }
