@@ -17,13 +17,13 @@ const SubscriptionPage = async () => {
   return (
     <>
       <Navbar />
-      <div className="space-y-6 p-6">
+      <div className="space-y-6 overflow-auto p-6">
         <h1 className="text-2xl font-bold">Assinatura</h1>
-        <div className="flex gap-6">
-          <Card className="w-[450px]">
+        <div className="flex flex-wrap gap-6">
+          <Card className="w-full bg-primary/10 sm:bg-transparent lg:w-[450px]">
             <CardHeader className="relative border-b border-solid py-8">
               {!hasPremiumPlan && (
-                <Badge className="absolute left-8 top-11 bg-primary/10 text-primary">
+                <Badge className="absolute left-8 top-11 hidden bg-primary/10 text-primary sm:block">
                   Ativo
                 </Badge>
               )}
@@ -48,7 +48,7 @@ const SubscriptionPage = async () => {
             </CardContent>
           </Card>
 
-          <Card className="w-[450px]">
+          <Card className="w-full lg:w-[450px]">
             <CardHeader className="relative border-b border-solid py-8">
               {hasPremiumPlan && (
                 <Badge className="absolute left-8 top-11 bg-primary/10 text-primary">
