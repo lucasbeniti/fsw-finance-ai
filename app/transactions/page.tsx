@@ -6,6 +6,7 @@ import Navbar from "../_components/navbar";
 import { auth } from "@clerk/nextjs/server";
 import { redirect } from "next/navigation";
 import { ScrollArea } from "../_components/ui/scroll-area";
+import { canUserAddTransaction } from "../_data/can-user-add-transaction";
 
 const TransactionPage = async () => {
   const { userId } = auth();
@@ -17,6 +18,8 @@ const TransactionPage = async () => {
       userId,
     },
   });
+  const userCandAddTransaction = await canUserAddTransaction();
+
   return (
     <>
       <Navbar />
@@ -24,7 +27,9 @@ const TransactionPage = async () => {
         {/* Título e botao */}
         <div className="flex w-full flex-wrap items-center justify-between gap-2">
           <h1 className="w-full text-2xl font-bold sm:w-auto">Transações</h1>
-          <AddTransactionButton />
+          <AddTransactionButton
+            userCanAddTransaction={userCandAddTransaction}
+          />
         </div>
 
         <ScrollArea className="h-[80vh]">
